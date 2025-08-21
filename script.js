@@ -1,8 +1,13 @@
+let allClubs = []; // Global store
+
 fetch('clubs.json')
   .then(response => response.json())
   .then(data => {
+    allClubs = data;
+
     const clubList = document.getElementById('clubList');
     const searchInput = document.getElementById('searchInput');
+    const federationToggle = document.getElementById('federationToggle');
 
     function renderClubs(clubs) {
       clubList.innerHTML = '';
@@ -20,29 +25,42 @@ fetch('clubs.json')
       });
     }
 
-    renderClubs(data);
-
-    searchInput.addEventListener('input', () => {
+    function applyFilters() {
       const query = searchInput.value.toLowerCase();
-      const filtered = data.filter(club =>
-        club.name.toLowerCase().includes(query) ||
-        club.events.some(event => event.toLowerCase().includes(query))
-      );
+      const showOnlyFederated = federationToggle.checked;
+
+      const filtered = allClubs.filter(club => {
+        const matchesSearch =
+          club.name.toLowerCase().includes(query) ||
+          club.events.some(event => event.toLowerCase().includes(query));
+        const matchesFederation = showOnlyFederated ? club.affiliated : true;
+        return matchesSearch && matchesFederation;
+      });
+
       renderClubs(filtered);
-    });
+    }
+
+    // Initial render
+    renderClubs(allClubs);
+
+    // Event listeners
+    searchInput.addEventListener('input', applyFilters);
+    federationToggle.addEventListener('change', applyFilters);
   });
 
+
 // Federation filter PHASE 2
-const federationToggle = document.getElementById('federationToggle');
-federationToggle.addEventListener('change', () => {
-  const showOnlyFederated = federationToggle.checked;
-  fetch('clubs.json')
-    .then(res => res.json())
-    .then(data => {
-      const filtered = showOnlyFederated ? data.filter(c => c.affiliated) : data;
-      renderClubs(filtered);
-    });
-});
+function setupFederationFilter() {
+  const federationToggle = document.getElementById('federationToggle');
+  federationToggle.addEventListener('change', () => {
+    const showOnlyFederated = federationToggle.checked;
+    const filtered = showOnlyFederated
+      ? allClubs.filter(club => club.affiliated)
+      : allClubs;
+    renderClubs(filtered);
+  });
+}
+
 
 // Dark mode toggle
 document.getElementById('darkModeToggle').addEventListener('click', () => {
@@ -75,5 +93,6 @@ fetch('clubs.json')
   });
 
 ///
+
 
 
