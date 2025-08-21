@@ -45,3 +45,51 @@ footer {
   padding: 1em;
   background: #ddd;
 }
+
+#filters, #map, #testimonials, #addClub {
+  margin: 2em auto;
+  max-width: 800px;
+  padding: 1em;
+  background: white;
+  border-radius: 8px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.testimonial {
+  min-width: 300px;
+  margin-right: 1em;
+  scroll-snap-align: start;
+  background: #ffe0e0;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+#mapContainer {
+  height: 300px;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+body.dark-mode {
+  background: #222;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background: #333;
+}
+
+body.dark-mode .club-card,
+body.dark-mode #filters,
+body.dark-mode #map,
+body.dark-mode #testimonials,
+body.dark-mode #addClub {
+  background: #444;
+  color: #eee;
+}
+
