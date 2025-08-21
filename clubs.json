@@ -3,6 +3,8 @@
     "name": "Club Atlético Lima Sur",
     "events": ["100m", "Long Jump", "Shot Put"],
     "address": "Av. Surco 1234, Surco, Lima",
+    "lat": -12.0235,
+    "lng": -77.0502,
     "affiliated": true,
     "contact": {
       "email": "contacto@limasurclub.pe",
@@ -19,12 +21,8 @@
       "instagram": "@sprintmasters"
     }
   }
-  {
-  "name": "Club Atlético Lima Sur",
-  "lat": -12.0235,
-  "lng": -77.0502
-}
 
 ]
+
 
 
