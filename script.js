@@ -31,3 +31,27 @@ fetch('clubs.json')
       renderClubs(filtered);
     });
   });
+
+// Federation filter PHASE 2
+const federationToggle = document.getElementById('federationToggle');
+federationToggle.addEventListener('change', () => {
+  const showOnlyFederated = federationToggle.checked;
+  fetch('clubs.json')
+    .then(res => res.json())
+    .then(data => {
+      const filtered = showOnlyFederated ? data.filter(c => c.affiliated) : data;
+      renderClubs(filtered);
+    });
+});
+
+// Dark mode toggle
+document.getElementById('darkModeToggle').addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+});
+
+// Club form (mock submission)
+document.getElementById('clubForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Gracias por enviar tu club. Será revisado pronto.');
+});
+
