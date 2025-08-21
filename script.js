@@ -55,3 +55,25 @@ document.getElementById('clubForm').addEventListener('submit', (e) => {
   alert('Gracias por enviar tu club. Será revisado pronto.');
 });
 
+//////////// club addition phase 2 MAPS
+const map = L.map('mapContainer').setView([-12.0464, -77.0428], 12); // Lima center
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+fetch('clubs.json')
+  .then(res => res.json())
+  .then(clubs => {
+    clubs.forEach(club => {
+      if (club.lat && club.lng) {
+        L.marker([club.lat, club.lng])
+          .addTo(map)
+          .bindPopup(`<strong>${club.name}</strong><br>${club.address}`);
+      }
+    });
+  });
+
+///
+
+
