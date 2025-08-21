@@ -3,8 +3,8 @@
     "name": "Club Atlético Lima Sur",
     "events": ["100m", "Long Jump", "Shot Put"],
     "address": "Av. Surco 1234, Surco, Lima",
-    "lat": -12.0235,
-    "lng": -77.0502,
+    "lat": -12.113190549805305,
+    "lng": -77.01136504522361,
     "affiliated": true,
     "contact": {
       "email": "contacto@limasurclub.pe",
@@ -12,17 +12,20 @@
     }
   },
   {
-    "name": "SprintMasters Surco",
+    "name": "SprintSeniors Surco",
     "events": ["200m", "400m", "Relay"],
     "address": "Estadio Municipal de Surco",
+    "lat": -12.145419640830319,
+    "lng": -77.0007649240448,
     "affiliated": false,
     "contact": {
-      "email": "info@sprintmasters.pe",
-      "instagram": "@sprintmasters"
+      "email": "info@sprintseniors.pe",
+      "instagram": "@sprintseniors"
     }
   }
 
 ]
+
 
 
 
