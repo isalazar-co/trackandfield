@@ -18,6 +18,45 @@
 
   <section id="clubList"></section>
 
+  <!--phase 2>
+  -->
+<section id="filters">
+  <label>
+    <input type="checkbox" id="federationToggle" />
+    Mostrar solo clubes federados
+  </label>
+</section>
+
+<section id="map">
+  <h2>📍 Mapa de Clubes</h2>
+  <div id="mapContainer"></div>
+</section>
+
+<section id="testimonials">
+  <h2>💬 Historias de Atletas</h2>
+  <div class="carousel">
+    <div class="testimonial">“Gracias a TrackFinder encontré mi club ideal en Surco.” – Camila, 400m</div>
+    <div class="testimonial">“Mejoré mi marca y conocí a mi entrenador aquí.” – Diego, salto largo</div>
+    <div class="testimonial">“¡Una herramienta increíble para la comunidad atlética!” – Valeria, 100m</div>
+  </div>
+</section>
+
+<section id="addClub">
+  <h2>➕ Agrega tu club</h2>
+  <form id="clubForm">
+    <input type="text" placeholder="Nombre del club" required />
+    <input type="text" placeholder="Eventos (100m, salto, etc.)" required />
+    <input type="text" placeholder="Dirección" required />
+    <input type="email" placeholder="Email de contacto" required />
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<button id="darkModeToggle">🌙 Cambiar modo</button>
+
+  <!--phase 2>
+  -->
+
   <footer>
     <p>Hecho con ❤️ por Ivan Jesus para la comunidad atlética peruana.</p>
   </footer>
@@ -25,3 +64,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
