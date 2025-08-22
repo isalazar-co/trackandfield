@@ -1,7 +1,7 @@
 // 🌐 Language setup
 const translations = {
   es: {
-    title: "🏃 TrackFinder Perú",
+    title: "TrackClub Finder Perú",
     tagline: "Encuentra tu club. Mejora tu marca.",
     federated: "Federado",
     yes: "✅ Sí",
@@ -13,8 +13,8 @@ const translations = {
     language: "🌐 Cambiar idioma"
   },
   en: {
-    title: "🏃 TrackFinder Peru",
-    tagline: "Find your club. Improve your time.",
+    title: "🏃 TrackClub Finder Peru",
+    tagline: "Find your club. Bring your dreams to life, make friends, and have fun.",
     federated: "Federated",
     yes: "✅ Yes",
     no: "❌ No",
@@ -118,3 +118,4 @@ languageToggle.addEventListener('click', () => {
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
+
