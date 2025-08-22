@@ -2,7 +2,7 @@
 const translations = {
   es: {
     title: "TrackClub Finder Perú",
-    tagline: "Encuentra tu club. Mejora tu marca.",
+    tagline: "Encuentra tu club. Dale vida a tus sueños, haz amigos y diviértete.",
     federated: "Federado",
     yes: "✅ Sí",
     no: "❌ No",
@@ -118,4 +118,5 @@ languageToggle.addEventListener('click', () => {
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
+
 
