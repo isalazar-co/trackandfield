@@ -1,3 +1,48 @@
+//translations
+const translations = {
+  es: {
+    title: "🏃 TrackFinder Perú",
+    tagline: "Encuentra tu club. Mejora tu marca.",
+    federated: "Federado",
+    yes: "✅ Sí",
+    no: "❌ No",
+    events: "Eventos",
+    address: "Dirección",
+    contact: "Contacto",
+    rating: "Calificación",
+    reviews: "Reseñas de atletas",
+    darkMode: "🌙 Cambiar modo",
+    language: "🌐 Cambiar idioma"
+  },
+  en: {
+    title: "🏃 TrackFinder Peru",
+    tagline: "Find your club. Improve your time.",
+    federated: "Federated",
+    yes: "✅ Yes",
+    no: "❌ No",
+    events: "Events",
+    address: "Address",
+    contact: "Contact",
+    rating: "Rating",
+    reviews: "Athlete Reviews",
+    darkMode: "🌙 Toggle mode",
+    language: "🌐 Switch language"
+  }
+};
+
+let currentLang = 'es'; // Default language
+
+// translations on top
+
+// update static text dinamically
+function updateLanguageUI() {
+  const t = translations[currentLang];
+  document.querySelector('header h1').textContent = t.title;
+  document.querySelector('header p').textContent = t.tagline;
+  document.getElementById('languageToggle').textContent = t.language;
+  document.getElementById('darkModeToggle').textContent = t.darkMode;
+}
+//
 let allClubs = []; // Global store
 
 fetch('clubs.json')
@@ -9,7 +54,9 @@ fetch('clubs.json')
     const searchInput = document.getElementById('searchInput');
     const federationToggle = document.getElementById('federationToggle');
 
-    function renderClubs(clubs) {
+  /*  previous version
+  
+  function renderClubs(clubs) {
       clubList.innerHTML = '';
       clubs.forEach(club => {
         const card = document.createElement('div');
@@ -24,6 +71,26 @@ fetch('clubs.json')
         clubList.appendChild(card);
       });
     }
+        */
+
+    ////new version
+    function renderClubs(clubs) {
+  const t = translations[currentLang];
+  clubList.innerHTML = '';
+  clubs.forEach(club => {
+    const card = document.createElement('div');
+    card.className = 'club-card';
+    card.innerHTML = `
+      <h3>${club.name}</h3>
+      <p><strong>${t.events}:</strong> ${club.events.join(', ')}</p>
+      <p><strong>${t.address}:</strong> ${club.address}</p>
+      <p><strong>${t.federated}:</strong> ${club.affiliated ? t.yes : t.no}</p>
+      <p><strong>${t.contact}:</strong> ${club.contact.email}<br>${club.contact.instagram}</p>
+    `;
+    clubList.appendChild(card);
+  });
+}
+///// new version 
 
     function applyFilters() {
       const query = searchInput.value.toLowerCase();
@@ -42,6 +109,18 @@ fetch('clubs.json')
 
     // Initial render
     renderClubs(allClubs);
+
+    //call it after initial render
+    updateLanguageUI();
+//
+
+    //re render
+    document.getElementById('languageToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  updateLanguageUI();
+  applyFilters(); // re-render clubs with new language
+});
+
 
     // Event listeners
     searchInput.addEventListener('input', applyFilters);
@@ -93,6 +172,7 @@ fetch('clubs.json')
   });
 
 ///
+
 
 
 
