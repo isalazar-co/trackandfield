@@ -1,74 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="pageTitle">TrackFinder Perú</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <title>TrackFinder Perú</title>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>🏃 TrackClub Finder Perú</h1>
-    <p>Encuentra tu club. Dale vida a tus sueños, haz amigos y diviértete.</p>
+    <h1 id="headerTitle">🏃 TrackClub Finder Perú</h1>
+    <p id="headerTagline">Encuentra tu club. Dale vida a tus sueños, haz amigos y diviértete.</p>
     <button id="languageToggle">🌐 Cambiar idioma</button>
+    <button id="darkModeToggle">🌙 Cambiar modo</button>
   </header>
 
   <section id="search">
     <input type="text" id="searchInput" placeholder="Buscar club o evento..." />
   </section>
 
+  <section id="filters">
+    <label id="federationLabel">
+      <input type="checkbox" id="federationToggle" />
+      Mostrar solo clubes federados
+    </label>
+  </section>
+
   <section id="clubList"></section>
 
-  <!--phase 2>
-  -->
-<section id="filters">
-  <label>
-    <input type="checkbox" id="federationToggle" />
-    Mostrar solo clubes federados
-  </label>
-</section>
+  <section id="map">
+    <h2 id="mapTitle">📍 Mapa de Clubes</h2>
+    <div id="mapContainer" style="height: 400px;"></div>
+  </section>
 
-<section id="map">
-  <h2>📍 Mapa de Clubes</h2>
-<div id="mapContainer" style="height: 400px;"></div>
-</section>
+  <section id="testimonials">
+    <h2 id="testimonialsTitle">💬 Historias de Atletas</h2>
+    <div class="carousel">
+      <div class="testimonial" data-es="“Gracias a TrackFinder encontré mi club ideal en Surco.” – Camila, 400m" data-en="“Thanks to TrackFinder I found my ideal club in Surco.” – Camila, 400m"></div>
+      <div class="testimonial" data-es="“Mejoré mi marca y conocí a mi entrenador aquí.” – Diego, salto largo" data-en="“I improved my time and met my coach here.” – Diego, long jump"></div>
+      <div class="testimonial" data-es="“¡Una herramienta increíble para la comunidad atlética!” – Valeria, 100m" data-en="“An incredible tool for the athletic community!” – Valeria, 100m"></div>
+    </div>
+  </section>
 
-<section id="testimonials">
-  <h2>💬 Historias de Atletas</h2>
-  <div class="carousel">
-    <div class="testimonial">“Gracias a TrackFinder encontré mi club ideal en Surco.” – Camila, 400m</div>
-    <div class="testimonial">“Mejoré mi marca y conocí a mi entrenador aquí.” – Diego, salto largo</div>
-    <div class="testimonial">“¡Una herramienta increíble para la comunidad atlética!” – Valeria, 100m</div>
-  </div>
-</section>
-
-<section id="addClub">
-  <h2>➕ Agrega tu club</h2>
-  <form id="clubForm">
-    <input type="text" placeholder="Nombre del club" required />
-    <input type="text" placeholder="Eventos (100m, salto, etc.)" required />
-    <input type="text" placeholder="Dirección" required />
-    <input type="email" placeholder="Email de contacto" required />
-    <button type="submit">Enviar</button>
-  </form>
-</section>
-
-<button id="darkModeToggle">🌙 Cambiar modo</button>
-
-  <!--phase 2>
-  -->
+  <section id="addClub">
+    <h2 id="addClubTitle">➕ Agrega tu club</h2>
+    <form id="clubForm">
+      <input type="text" id="formName" placeholder="Nombre del club" required />
+      <input type="text" id="formEvents" placeholder="Eventos (100m, salto, etc.)" required />
+      <input type="text" id="formAddress" placeholder="Dirección" required />
+      <input type="email" id="formEmail" placeholder="Email de contacto" required />
+      <button type="submit" id="formSubmit">Enviar</button>
+    </form>
+  </section>
 
   <footer>
-    <p>Hecho con ❤️ por Ivan Jesus para la comunidad atlética peruana.</p>
+    <p id="footerText">Hecho con ❤️ por Ivan Jesus para la comunidad atlética peruana.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
