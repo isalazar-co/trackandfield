@@ -172,7 +172,7 @@ function renderClubs(clubs) {
 
     card.innerHTML = `
       <h3>${club.name}</h3>
-      <p><strong>${t.events}:</strong> ${club.events.join(', ')}</p>
+      <p><strong>${t.events}:</strong> ${club.events.map(e => eventTranslations[e]?.[currentLang] || e).join(', ')}</p>
       <p><strong>${t.address}:</strong> ${club.address}</p>
       <p><strong>${t.federated}:</strong> ${club.affiliated ? t.yes : t.no}</p>
       <p><strong>${t.contact}:</strong> ${club.contact.email}<br>${club.contact.instagram}</p>
@@ -234,5 +234,6 @@ languageToggle.addEventListener('click', () => {
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
+
 
 
