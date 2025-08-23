@@ -104,6 +104,11 @@ function renderClubs(clubs) {
   clubs.forEach(club => {
     const card = document.createElement('div');
     card.className = 'club-card';
+    //making it nicer the federated badge (visual cue)
+    if (club.affiliated) {
+    card.classList.add('federated');
+    }
+
     card.innerHTML = `
       <h3>${club.name}</h3>
       <p><strong>${t.events}:</strong> ${club.events.join(', ')}</p>
@@ -168,3 +173,4 @@ languageToggle.addEventListener('click', () => {
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
+
