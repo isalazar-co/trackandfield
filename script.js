@@ -10,7 +10,20 @@ const translations = {
     address: "Dirección",
     contact: "Contacto",
     darkMode: "🌙 Cambiar modo",
-    language: "🌐 Cambiar idioma"
+    language: "🌐 Cambiar idioma",
+    searchPlaceholder: "Buscar club o evento...",
+    federationLabel: "Mostrar solo clubes federados",
+    mapTitle: "📍 Mapa de Clubes",
+    testimonialsTitle: "💬 Historias de Atletas",
+    addClubTitle: "➕ Agrega tu club",
+    formFields: {
+      name: "Nombre del club",
+      events: "Eventos (100m, salto, etc.)",
+      address: "Dirección",
+      email: "Email de contacto",
+      submit: "Enviar"
+    },
+    footer: "Hecho con ❤️ por Ivan Jesus para la comunidad atlética peruana."
   },
   en: {
     title: "🏃 TrackClub Finder Peru",
@@ -22,7 +35,20 @@ const translations = {
     address: "Address",
     contact: "Contact",
     darkMode: "🌙 Toggle mode",
-    language: "🌐 Switch language"
+    language: "🌐 Switch language",
+    searchPlaceholder: "Search club or event...",
+    federationLabel: "Show only federated clubs",
+    mapTitle: "📍 Club Map",
+    testimonialsTitle: "💬 Athlete Stories",
+    addClubTitle: "➕ Add Your Club",
+    formFields: {
+      name: "Club Name",
+      events: "Events (100m, long jump, etc.)",
+      address: "Address",
+      email: "Contact Email",
+      submit: "Submit"
+    },
+    footer: "Made with ❤️ by Ivan Jesus for the Peruvian athletic community."
   }
 };
 
@@ -38,10 +64,37 @@ const languageToggle = document.getElementById('languageToggle');
 // 🧠 Update static UI text based on language
 function updateLanguageUI() {
   const t = translations[currentLang];
-  document.querySelector('header h1').textContent = t.title;
-  document.querySelector('header p').textContent = t.tagline;
+
+  document.getElementById('pageTitle').textContent = t.title;
+  document.getElementById('headerTitle').textContent = t.title;
+  document.getElementById('headerTagline').textContent = t.tagline;
+  searchInput.placeholder = t.searchPlaceholder;
+
+  document.getElementById('federationLabel').innerHTML = `
+    <input type="checkbox" id="federationToggle" />
+    ${t.federationLabel}
+  `;
+  document.getElementById('mapTitle').textContent = t.mapTitle;
+  document.getElementById('testimonialsTitle').textContent = t.testimonialsTitle;
+  document.getElementById('addClubTitle').textContent = t.addClubTitle;
+
+  document.getElementById('formName').placeholder = t.formFields.name;
+  document.getElementById('formEvents').placeholder = t.formFields.events;
+  document.getElementById('formAddress').placeholder = t.formFields.address;
+  document.getElementById('formEmail').placeholder = t.formFields.email;
+  document.getElementById('formSubmit').textContent = t.formFields.submit;
+
+  document.getElementById('footerText').textContent = t.footer;
   darkModeToggle.textContent = t.darkMode;
   languageToggle.textContent = t.language;
+
+  // Reattach federation toggle listener after replacing label
+  document.getElementById('federationToggle').addEventListener('change', applyFilters);
+
+  // Translate testimonials
+  document.querySelectorAll('.testimonial').forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
 }
 
 // 🏃 Render club cards
@@ -65,7 +118,7 @@ function renderClubs(clubs) {
 // 🔍 Apply filters (search + federation)
 function applyFilters() {
   const query = searchInput.value.toLowerCase();
-  const showOnlyFederated = federationToggle.checked;
+  const showOnlyFederated = document.getElementById('federationToggle').checked;
 
   const filtered = allClubs.filter(club => {
     const matchesSearch =
@@ -107,17 +160,11 @@ fetch('clubs.json')
 
 // 🎛️ Event listeners
 searchInput.addEventListener('input', applyFilters);
-federationToggle.addEventListener('change', applyFilters);
-
 darkModeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
 });
-
 languageToggle.addEventListener('click', () => {
   currentLang = currentLang === 'es' ? 'en' : 'es';
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
-
-
-
