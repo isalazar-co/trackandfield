@@ -52,6 +52,67 @@ const translations = {
   }
 };
 
+//Event Translations
+const eventTranslations = {
+  // Sprints
+  "100m": { es: "100 metros", en: "100m" },
+  "200m": { es: "200 metros", en: "200m" },
+  "400m": { es: "400 metros", en: "400m" },
+
+  // Middle Distance
+  "800m": { es: "800 metros", en: "800m" },
+  "1500m": { es: "1500 metros", en: "1500m" },
+
+  // Long Distance
+  "3000m": { es: "3000 metros", en: "3000m" },
+  "5000m": { es: "5000 metros", en: "5000m" },
+  "10000m": { es: "10000 metros", en: "10000m" },
+
+  // Hurdles
+  "100m Hurdles": { es: "100 metros con vallas", en: "100m Hurdles" },
+  "110m Hurdles": { es: "110 metros con vallas", en: "110m Hurdles" },
+  "400m Hurdles": { es: "400 metros con vallas", en: "400m Hurdles" },
+
+  // Steeplechase
+  "3000m Steeplechase": { es: "3000 metros con obstáculos", en: "3000m Steeplechase" },
+
+  // Relays
+  "4x100m Relay": { es: "Relevo 4x100m", en: "4x100m Relay" },
+  "4x400m Relay": { es: "Relevo 4x400m", en: "4x400m Relay" },
+  "Medley Relay": { es: "Relevo combinado", en: "Medley Relay" },
+
+  // Jumps
+  "Long Jump": { es: "Salto largo", en: "Long Jump" },
+  "Triple Jump": { es: "Salto triple", en: "Triple Jump" },
+  "High Jump": { es: "Salto alto", en: "High Jump" },
+  "Pole Vault": { es: "Salto con pértiga", en: "Pole Vault" },
+
+  // Throws
+  "Shot Put": { es: "Lanzamiento de bala", en: "Shot Put" },
+  "Discus Throw": { es: "Lanzamiento de disco", en: "Discus Throw" },
+  "Javelin Throw": { es: "Lanzamiento de jabalina", en: "Javelin Throw" },
+  "Hammer Throw": { es: "Lanzamiento de martillo", en: "Hammer Throw" },
+
+  // Combined Events
+  "Decathlon": { es: "Decatlón", en: "Decathlon" },
+  "Heptathlon": { es: "Heptatlón", en: "Heptathlon" },
+
+  // Race Walk
+  "20km Race Walk": { es: "Marcha 20km", en: "20km Race Walk" },
+  "50km Race Walk": { es: "Marcha 50km", en: "50km Race Walk" },
+
+  // Road Events
+  "Marathon": { es: "Maratón", en: "Marathon" },
+  "Half Marathon": { es: "Media maratón", en: "Half Marathon" },
+
+  //Special Custom non-official events
+  "Kids Sprint": { es: "Carrera infantil", en: "Kids Sprint" },
+  "Masters 60+": { es: "Masters 60+", en: "Masters 60+" }
+
+};
+
+//
+
 let currentLang = 'es';
 let allClubs = [];
 
@@ -173,4 +234,5 @@ languageToggle.addEventListener('click', () => {
   updateLanguageUI();
   applyFilters(); // re-render with new language
 });
+
 
