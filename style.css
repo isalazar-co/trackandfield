@@ -1,3 +1,4 @@
+/* Base styles */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -11,6 +12,22 @@ header {
   color: white;
   padding: 1em;
   text-align: center;
+}
+
+header button {
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  color: #ff4d4d;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+header button:hover {
+  background-color: #ffe0e0;
 }
 
 #search {
@@ -38,6 +55,10 @@ header {
   margin: 1em;
   padding: 1em;
   width: 300px;
+}
+
+.club-card.federated {
+  border-left: 6px solid #4caf50;
 }
 
 footer {
@@ -75,6 +96,34 @@ footer {
   border-radius: 8px;
 }
 
+/* Form styling */
+#clubForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+#clubForm input,
+#clubForm button {
+  padding: 0.6em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#clubForm button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#clubForm button:hover {
+  background-color: #e03c3c;
+}
+
+/* Dark mode */
 body.dark-mode {
   background: #222;
   color: #eee;
@@ -93,3 +142,17 @@ body.dark-mode #addClub {
   color: #eee;
 }
 
+/* Responsive layout */
+@media (max-width: 600px) {
+  #searchInput {
+    width: 95%;
+  }
+
+  .club-card {
+    width: 90%;
+  }
+
+  .testimonial {
+    min-width: 90%;
+  }
+}
